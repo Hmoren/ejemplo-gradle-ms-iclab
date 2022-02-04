@@ -63,12 +63,15 @@ pipeline {
             post {
                 always {
                     sh "echo 'fase always executed post'"
+                    slackSend channel: 'sección1-grupo4', message: 'fase always executed post'
                 }
                 success {
                     sh "echo 'fase success'"
+                    slackSend channel: 'sección1-grupo4', message: 'fase success'
                 }
                 failure {
                     sh "echo 'fase failure'"
+                    slackSend channel: 'sección1-grupo4', message: 'fase failure'
                 }
             }
         }
