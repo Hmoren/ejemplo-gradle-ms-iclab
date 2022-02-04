@@ -63,15 +63,17 @@ pipeline {
             post {
                 always {
                     sh "echo 'fase always executed post'"
-                    slackSend channel: 'sección1-grupo4', message: 'fase always executed post'
+                    slackSend channel: 'sección1-grupo4', message: 'FINALIZA PROCESO'
                 }
                 success {
                     sh "echo 'fase success'"
-                    slackSend channel: 'sección1-grupo4', message: 'fase success'
+                    slackSend channel: 'sección1-grupo4', message: 'PROCESO EXITOSO'
+                    slackSend color: 'good', channel: 'sección1-grupo4',message: "[Mentor] [${JOB_NAME}] [${BUILD_TAG}] Ejecucion Exitosa", teamDomain: 'dipdevopsusac-tr94431'
                 }
                 failure {
                     sh "echo 'fase failure'"
-                    slackSend channel: 'sección1-grupo4', message: 'fase failure'
+                    slackSend channel: 'sección1-grupo4', message: 'PROCESO CON ERROR(ES)'
+                    slackSend color: 'danger', channel: 'sección1-grupo4',message: "[Mentor] [${env.JOB_NAME}] [${BUILD_TAG}] Ejecucion fallida en stage [${env.TAREA}]", teamDomain: 'dipdevopsusac-tr94431'
                 }
             }
         }
