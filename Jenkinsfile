@@ -67,13 +67,11 @@ pipeline {
                 }
                 success {
                     sh "echo 'fase success'"
-                    slackSend channel: 'sección1-grupo4', message: 'PROCESO EXITOSO',
                     slackSend color: 'good', channel: 'sección1-grupo4',message: "[Grupo2][${BRANCH_NAME}][${JOB_NAME}] [${BUILD_TAG}] Ejecucion Exitosa", teamDomain: 'dipdevopsusac-tr94431',
                     slackSend color: 'danger', channel: 'sección1-grupo4',message: "[Grupo2] [${env.JOB_NAME}] [${BUILD_TAG}] Ejecucion fallida en stage [${env.TAREA}]", teamDomain: 'dipdevopsusac-tr94431'
                 }
                 failure {
                     sh "echo 'fase failure'"
-                    slackSend channel: 'sección1-grupo4', message: 'PROCESO CON ERROR(ES)'
                     slackSend color: 'danger', channel: 'sección1-grupo4',message: "[Grupo2] [${env.JOB_NAME}] [${BUILD_TAG}] Ejecucion fallida en stage [${env.TAREA}]", teamDomain: 'dipdevopsusac-tr94431'
                 }
             }
